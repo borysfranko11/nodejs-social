@@ -1,0 +1,47 @@
+extends ../layouts/default
+
+
+block main
+  center
+    h3= title
+
+block content
+  #confirmModal.modal
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button(class="close" data-dismiss="modal" aria-hidden="true")
+            |&times
+          .h3
+            |Confirmation
+        .modal-body
+              div.checkbox
+                label(for="confirmage")
+                  input(type="checkbox", name="confirmage" id="confirmage", value="value")
+                  | I confirm that I am 18 years of age or older and read the Terms of Use
+              div.checkbox
+                label(for="confirmcountry")
+                  input(type="checkbox", name="confirmcountry" id="confirmcountry", value="value")
+                  | I confirm that I live outside of the United States or I will be disqulaified from any tournament
+        .modal-footer
+          a(class="btn btn-success" onClick="checkAgeConfirmation()")
+            |Proceed
+          a(class="btn btn-danger" data-dismiss="modal")
+            |Cancel
+  .text-center
+    a.btn.btn-success.btn-sm(href="#" data-toggle="modal" data-url="/auth/facebook" onClick="showConfirmModal(this)")      
+        i.fa.fa-facebook.fa-2x
+           Login with facebook
+    &nbsp;&nbsp;  
+    a.btn.btn-primary.btn-sm(href="#" data-url="/auth/google" onClick="showConfirmModal(this)")
+      i.fa.fa-google.fa-2x
+        Login with Google
+    &nbsp;&nbsp;
+
+  .text-center
+    br
+    h3 OR
+    br
+
+  .login
+    block auth

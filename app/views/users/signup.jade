@@ -1,0 +1,33 @@
+extends auth
+
+block auth
+  form.form-horizontal.form-signin(action="/users", method="post", role="form")
+    input(type='hidden', name='_csrf', value="#{csrf_token}")
+
+    input(type='hidden', name='confirmage')
+
+    input(type='hidden', name='confirmcountry')
+    div.form-group
+      input#email.form-control.m-t-10(type='text', name="email", placeholder='Email', value=user.email)
+    div.form-group
+      input#name.form-control(type='text', name="name", placeholder='Full name', value=user.name)
+    div.form-group
+      input#username.form-control(type='text', name="username", placeholder='Username', value=user.username)
+    div.form-group
+      input#password.form-control(type='password', name="password", placeholder='Password')
+
+    div.checkbox
+      label(for="confirmagesignup")
+        input(type="checkbox", name="confirmage" id="confirmagesignup", value="value")
+        | I confirm that I am 18 years of age or older and read the Terms of Use
+    div.checkbox
+      label(for="confirmcountrysignup")
+        input(type="checkbox", name="confirmcountry" id="confirmcountrysignup", value="value")
+        | I confirm that I live outside of the United States or I will be disqulaified from any tournament
+
+    br
+    .text-center
+      button.btn.btn-primary(type='submit') Sign up
+      br
+      br
+      a.show-login(href="/login") Log in
