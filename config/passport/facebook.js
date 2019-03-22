@@ -14,9 +14,9 @@ const User = mongoose.model('User');
  */
 
 module.exports = new FacebookStrategy({
-    clientID: config.facebook.clientID,
-    clientSecret: config.facebook.clientSecret,
-    callbackURL: config.facebook.callbackURL,
+    clientID: process.env.FACEBOOK_CLIENTID,
+    clientSecret: process.env.FACEBOOK_SECRET,
+    callbackURL: 'https://wsotp.herokuapp.com/auth/facebook/callback',
     profileFields: ['email','displayName','name']
   },
   function (accessToken, refreshToken, profile, done) {
