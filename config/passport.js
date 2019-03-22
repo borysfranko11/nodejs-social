@@ -28,7 +28,4 @@ module.exports = function (passport) {
   passport.use(local);
   passport.use(google);
   passport.use(facebook);
-  passport.use(twitter);
-  passport.use(linkedin);
-  passport.use(github);
 };
