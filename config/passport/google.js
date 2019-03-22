@@ -12,11 +12,12 @@ const User = mongoose.model('User');
 /**
  * Expose
  */
-
+console.log('-----------------------');
+console.log(process.env.GOOGLE_CLIENTID);
 module.exports = new GoogleStrategy({
-    clientID: config.google.clientID,
-    clientSecret: config.google.clientSecret,
-    callbackURL: config.google.callbackURL
+    clientID: process.env.GOOGLE_CLIENTID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: 'https://wsotp.herokuapp.com/auth/google/callback'
   },
   function (accessToken, refreshToken, profile, done) {
     const options = {
